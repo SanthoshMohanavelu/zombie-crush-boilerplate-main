@@ -8,7 +8,7 @@ const Composites = Matter.Composites;
 const Composite = Matter.Composite;
 
 var base1, base2
-
+var stones = []
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -19,10 +19,18 @@ function setup() {
   base1 = new Base(180, 390, 1000, 102)
   base2 = new Base(1610, 390, 1000, 102)
 
-  Matter.Composite.add(bridge.body, jointPoint);
+  //Matter.Composite.add(bridge.body, jointPoint);
   jointLink = new Link(bridge, jointPoint);
 
   bridge = new Bridge
+
+  for(var i = 0;i <= 8; i++) {
+    var x = random(width / 2 - 200, width / 2 + 300);
+    var y = random(-10, 140);
+    var stone = new Stone(x, y, 80, 80);
+    stones.push(stone)
+
+  }
 
 }
 
