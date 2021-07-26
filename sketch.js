@@ -12,7 +12,6 @@ var stones = [];
 var bg_image
 var zombie_image
 
-//hello
 
 function preload() {
   bg_image = loadImage("background.png")
@@ -37,7 +36,7 @@ function setup() {
   Matter.Composite.add(bridge.body, jointPoint);
   jointLink = new Link(bridge, jointPoint);
 
-  zombie = createSprite(200,height - 100,20,20)
+  zombie = createSprite(50,height - 100,20,20)
   zombie.addImage("hjkhkjh",zombie_image)
   zombie.scale=0.2
   zombie.velocityX = 5;
