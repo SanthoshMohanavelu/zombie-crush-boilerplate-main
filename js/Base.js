@@ -1,14 +1,14 @@
 class Base {
-    constructor(x, y, width, height) {
+    constructor(x, y, w, h, color, isStatic) {
         var options = {
             isStatic: true
         }
         
         this.x = x
         this.y = y
-        this.width = width
-        this.height = height
-        this.body = Bodies.rectangle(x, y, width, height, options)
+        this.w = w
+        this.h = h
+        this.body = Bodies.rectangle(x, y, w, h, options)
 
         World.add(world, this.body)
     }
@@ -17,8 +17,10 @@ class Base {
         var pos = this.body.position
     
         push()
+        translate(pos.x, pos.y,)
         rectMode(CENTER)
-        rect(pos.x, pos.y, this.width, this.height)
+        fill("yellow");
+        rect(0, 0, this.w, this.h)
         pop()
 
 

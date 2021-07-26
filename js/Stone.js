@@ -1,30 +1,23 @@
 class Stone {
-    constructor(x, y, radius) {
-        var options = {
-            isStatic: false,
-            restitution: 1,
-            friction:0,
-            density:0.8
-        }
+  constructor(x, y, radius) {
+    var options = {
+      restitution: 0.2,
+    };
 
-        this.body = Bodies.circle(x, y, radius, options)
-        this.radius
+    this.body = Bodies.circle(x, y, radius, options);
+    this.radius = radius;
 
-        World.add(world, this.body)
+    World.add(world, this.body);
+  }
 
-    }
-    
-    display(){
-        var pos = this.body.poisition
+  display() {
+    var pos = this.body.position;
 
-        ellipseMode(RADIUS)
-
-        fill("gray")
-
-        circle(pos.x, pos.y, this.radius)
-
-    }
-
-
-
-}           
+    push()
+    translate(pos.x, pos.y)
+    fill("gray");
+    ellipseMode(RADIUS);
+    ellipse(0, 0, this.radius);
+    pop()
+  }
+}
