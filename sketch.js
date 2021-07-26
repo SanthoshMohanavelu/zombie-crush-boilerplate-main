@@ -9,6 +9,15 @@ const Composite = Matter.Composite;
 
 var base1, base2;
 var stones = [];
+var bg_image
+var zombie_image
+
+function preload() {
+  bg_image = loadImage("background.png")
+  zombie_image = loadImage("zombie.png")
+
+
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -26,12 +35,22 @@ function setup() {
   Matter.Composite.add(bridge.body, jointPoint);
   jointLink = new Link(bridge, jointPoint);
 
+  zombie = createSprite(200,height - 100,20,20)
+  zombie.addImage("hjkhkjh",zombie_image)
+  zombie.scale=0.2
+  zombie.velocityX = 5;
+
   for (var i = 0; i <= 8; i++) {
     var x = random(width / 2 - 200, width / 2 + 300);
     var y = random(-10, 140);
     var stone = new Stone(x, y, 35, 35);
     stones.push(stone);
   }
+
+  axe_button = createImg("axe.png");
+  axe_button.position(930,290,10,10)
+  axe_button.size(70,70);
+  axe_button.mouseClicked(handlePress)
 
   var render = Render.create({
     element: document.body,
@@ -47,7 +66,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(bg_image);
   Engine.update(engine);
 
   bridge.show();
@@ -57,9 +76,32 @@ function draw() {
 
   for(var stone of stones){
    stone.display();
+   var pos = stone.body.position;
+   var distance = dist(zombie.position.x, zombie.position.y,pos.x,pos.y)
+   if(distance <= 50){
+     zombie.velocityX = 0;
+     Matter.Body.setVelocity(stone.body,{x:10, y:-10})
+     collided = true;
+   }
+  }
+
+  if(zombie.position.x > width ) {
+    zombie.x = 230
   }
 
   if (touches) {
     console.log("hello");
   }
+
+  drawSprites()
+}
+
+function handlePress() {
+  jointLink.dettach();
+  setTimeout(()=>{
+    bridge.break();
+  },1500);
+
+
+
 }
