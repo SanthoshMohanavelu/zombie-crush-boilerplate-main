@@ -47,6 +47,7 @@ function setup() {
     stones.push(stone);
   }
 
+  
   axe_button = createImg("axe.png");
   axe_button.position(930,290,10,10)
   axe_button.size(70,70);
