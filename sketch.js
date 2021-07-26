@@ -12,6 +12,8 @@ var stones = [];
 var bg_image
 var zombie_image
 
+//hello
+
 function preload() {
   bg_image = loadImage("background.png")
   zombie_image = loadImage("zombie.png")
@@ -47,7 +49,7 @@ function setup() {
     stones.push(stone);
   }
 
-  
+
   axe_button = createImg("axe.png");
   axe_button.position(930,290,10,10)
   axe_button.size(70,70);
